@@ -9,7 +9,7 @@ Aggiungiamo al nostro progetto Laravel una nuovo Api/ProjectController. Questo c
 - [x]  Milestone 2
 Testiamo la chiamata API tramite Postman e assicuriamoci di ricevere i dati correttamente.
 
-- []  Milestone 3
+- [x]  Milestone 3
 nome repo 2: vite-boolfolio
 Iniziamo ad occuparci della parte front-office della nostra applicazione: creiamo un nuovo progetto Vue 3 con Vite e installiamo axios.
 Colleghiamo questo progetto ad una repo separata.
