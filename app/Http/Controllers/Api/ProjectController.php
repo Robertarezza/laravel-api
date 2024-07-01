@@ -21,13 +21,14 @@ class ProjectController extends Controller
 
 
     public function show(string $project) {
+       // dd($project);
 
-        $projects = Project::with(['technologies', 'type'])->where('slug', $project)->first();
+         $project = Project::with(['technologies', 'type'])->where('slug', $project)->first();
 
         $data = [
 
-            'results' => $projects,
-            'success' => true,
+             'results' => $project,
+             'success' => true,
         ];
         return response()->json($data);
 
