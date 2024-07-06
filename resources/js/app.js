@@ -3,18 +3,25 @@ import "~resources/scss/app.scss";
 import.meta.glob(["../img/**"]);
 import * as bootstrap from "bootstrap";
 
+document.addEventListener('DOMContentLoaded', function() {
+    const coverImageInput = document.getElementById('cover_image');
+    const coverImagePreview = document.getElementById('cover_image_preview');
 
-document.getElementById('cover_image').addEventListener('change', function(event) {
-    // Recupero la lista di file selezionati
-    const fileList = event.target.files;
-    // Controlla se è stato selezionato almeno un file
-    if (fileList.length > 0) {
-        // Prende il primo file dalla lista
-        const file = fileList[0];
-        // Aggiorna l'anteprima dell'immagine
-        document.getElementById('cover_image_preview').src = URL.createObjectURL(file);
+    if (coverImageInput && coverImagePreview) {
+        coverImageInput.addEventListener('change', function(event) {
+            const fileList = event.target.files;
+            if (fileList.length > 0) {
+                const file = fileList[0];
+                coverImagePreview.src = URL.createObjectURL(file);
+            }
+        });
+    } else {
+        console.error('Elementi non trovati nel DOM.');
     }
 });
+
+
+
 
 //event.target.files è una proprietà degli eventi JavaScript che è disponibile quando si gestisce un evento di input file (change) su un elemento <input type="file">. Questa proprietà restituisce un oggetto FileList, che è una collezione di oggetti File rappresentanti i file selezionati dall'utente tramite l'input file.
 
