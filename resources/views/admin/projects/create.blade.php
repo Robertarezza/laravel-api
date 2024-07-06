@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container" style="margin-top:100px;">
-  <h3>Aggiungi un nuovo Comic all'archivio</h3>
+  <h3>Aggiungi un nuovo Progetto all'archivio</h3>
 
   @include('partials.errors')
 
