@@ -18,7 +18,7 @@ class LeadController extends Controller
     $newLead -> fill($data);
     $newLead -> save();
 
-    //invio email
+    //invio email qst mail è la stessa del file .env
     Mail::to('info@boolpress.com')->send(new NewContact($newLead));
         return response()->json([
             'success' =>'true'
