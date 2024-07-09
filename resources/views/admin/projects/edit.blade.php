@@ -62,8 +62,9 @@
             <div>
                 <label for="cover_image">Immagine di copertina</label>
                 <input type="file" name="cover_image" id="cover_image">
+               
             </div>
-            <div class="mb-3">
+            <div class="mb-3 gap-2">
                 <input type="checkbox" id="remove_cover_image" name="remove_cover_image">
                 <label for="remove_cover_image">Rimuovi immagine di copertina</label>
             </div>
@@ -72,11 +73,12 @@
         <div>
             <h4>Preview dell'immagine</h4>
             @if ($project->cover_image)
-            <img id="cover_image_preview" src="{{ asset('storage/' . $project->cover_image) }}" alt="Anteprima dell'immagine di copertina">
+            <img id="preview-image"  src="{{ asset('storage/' . $project->cover_image) }}" alt="Anteprima dell'immagine di copertina">
             @else
             <p>Nessuna immagine di copertina presente</p>
             @endif
         </div>
+       
 
         <div class="d-flex justify-content-around mt-3 mb-3 align-content-center">
             <a href="{{ route('admin.projects.index') }}" class="btn btn-outline-secondary">Indietro</a>

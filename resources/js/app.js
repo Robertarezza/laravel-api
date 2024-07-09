@@ -3,22 +3,38 @@ import "~resources/scss/app.scss";
 import.meta.glob(["../img/**"]);
 import * as bootstrap from "bootstrap";
 
-document.addEventListener('DOMContentLoaded', function() {
-    const coverImageInput = document.getElementById('cover_image');
-    const coverImagePreview = document.getElementById('cover_image_preview');
+const imageInput = document.getElementById("cover_image");
+const imagePreviewElem = document.getElementById("preview-image");
 
-    if (coverImageInput && coverImagePreview) {
-        coverImageInput.addEventListener('change', function(event) {
-            const fileList = event.target.files;
-            if (fileList.length > 0) {
-                const file = fileList[0];
-                coverImagePreview.src = URL.createObjectURL(file);
-            }
-        });
-    } else {
-        console.error('Elementi non trovati nel DOM.');
-    }
-});
+if (imageInput && imagePreviewElem) {
+    // Quando il valore dell'input cambia
+    imageInput.addEventListener("change", function () {
+        // prelevare il valore dell'input
+        const files = imageInput.files;
+        console.log(files);
+        // Se nell'input c'è un file
+        if (files && files.length > 0) {
+            console.log("File c'è!", files[0]);
+            //  Prelevare URL di questo file
+            const imageUrl = URL.createObjectURL(files[0]);
+            console.log(imageUrl);
+            //  inserire URL del file nell'elemento image
+            imagePreviewElem.src = imageUrl;
+            //  mostrare l'immagine
+            imagePreviewElem.classList.remove("d-none");
+            //  Dopo che la preview è stata visualizzata, rilasciamo la memoria allocata dal processo di lettura dell'immagine
+            imagePreviewElem.onload = () =>
+                URL.revokeObjectURL(imagePreviewElem.src);
+        } else {
+            // Altrimenti
+            console.log("Nessun FILE");
+            //  tolgo URL dell'elemento image
+            imagePreviewElem.src = "";
+            //  nascondo l'immagine
+            imagePreviewElem.classList.add('d-none');
+        }
+    });
+}
 
 
 
@@ -36,10 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // Rimuovere la visualizzazione dell'immagine di copertina se il checkbox è selezionato
 document.getElementById('remove_cover_image').addEventListener('change', function() {
     if (this.checked) {
-        document.getElementById('remove_cover_image_hidden').value = '1';
-        document.getElementById('cover_image_preview').style.display = 'none'; // Nascondi l'anteprima dell'immagine
+        console.log(this.checked);
+        document.getElementById('remove_cover_image_hidden') == true;
+        document.getElementById('image-preview').style.display = 'none'; // Nascondi l'anteprima dell'immagine
     } else {
-        document.getElementById('remove_cover_image_hidden').value = '0';
-        document.getElementById('cover_image_preview').style.display = 'block'; // Mostra l'anteprima dell'immagine
+        document.getElementById('remove_cover_image_hidden') == false;
+        document.getElementById('image-preview').style.display = 'block'; // Mostra l'anteprima dell'immagine
     }
 });

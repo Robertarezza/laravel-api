@@ -55,8 +55,11 @@
     </div>
 
     <div class="mb-3">
-      <label for="cover_image" class="form-label">Immagine di copertina</label>
-      <input class="form-control" type="file" id="cover_image" name="cover_image">
+      <label for="cover_image">Immagine di copertina</label>
+      <input type="file" name="cover_image" id="cover_image">
+    </div>
+    <div class="mb-3">
+      <img class="d-none" id="preview-image" src="" alt="">
     </div>
 
     
