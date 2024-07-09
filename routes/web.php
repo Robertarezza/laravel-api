@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +40,11 @@ Route::middleware('auth')
 
         Route::resource('projects', ProjectController::class)->
         parameters(['projects'=>'project:slug']);
+
+        //rotta per user che servono solo due
+        Route::resource('users', UserController::class)->only('edit', 'update');
+
+        Route::resource('leads', LeadController::class)->except('store', 'create');
 
 
         

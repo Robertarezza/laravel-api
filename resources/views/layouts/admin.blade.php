@@ -105,6 +105,16 @@
                   
                 </a>
               </li>
+              <li class="nav-item">
+              <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.leads.index' ? 'bg-secondary' : '' }}" href="{{ route('admin.leads.index') }}">
+
+                  <span>
+                    <span>
+                    <i class="fa-solid fa-cube fa-fw me-2"></i>Contatti
+                    </span>
+                  
+                </a>
+              </li>
 
             </ul>
 
